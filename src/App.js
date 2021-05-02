@@ -1,15 +1,17 @@
-import React from 'react';
-import Header from './components/Header';
-import Homepage from './pages/Homepage';
-import './default.scss';
+import React from 'react'
+import Header from './components/Header'
+import Homepage from './pages/Homepage'
+import './default.scss'
 
-function App() {
+function App () {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
-      <Homepage />
+      <div className='main'>
+        <Homepage />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
