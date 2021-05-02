@@ -7,7 +7,9 @@ import './styles.scss';
 const Header = () => (
   <Container className="p-0">
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#">Faith And Trust</Navbar.Brand>
+      <Navbar.Brand href="/">
+        Faith&amp;Trust
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -25,10 +27,10 @@ const Header = () => (
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <Nav>
+        <Nav className="callToActions">
           <Nav.Link href="#deets">More deets</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            Dank memes
+          <Nav.Link href="/registration">
+            REGISTER
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
