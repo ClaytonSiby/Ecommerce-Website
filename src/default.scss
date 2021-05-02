@@ -1,0 +1,31 @@
+html {
+    font-size: .9rem;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 400;
+}
+
+*,::before, ::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:hover {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
