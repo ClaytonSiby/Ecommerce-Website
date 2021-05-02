@@ -1,72 +1,72 @@
 .directory {
-    height: 80vh;
+  height: 80vh;
 
-    .fashionContainer {
+  .fashionContainer {
+    height: 100%;
+    background: green;
+
+    .menWear {
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      ::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
         height: 100%;
-        background: green;
+        z-index: 1;
+      }
 
-        .menWear {
-            height: 100%;
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-
-            ::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: rgba(0, 0, 0, .3);
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-            }
-
-            a {
-                background: #fff;
-                position: absolute;
-                z-index: 20;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 2rem;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-        }
-
-        .womenWear {
-            height: 100%;
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-
-            ::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: rgba(0, 0, 0, .3);
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-            }
-
-            a {
-                background: white;
-                position: absolute;
-                z-index: 20;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 2rem;
-                font-weight: 400;
-                text-transform: uppercase;
-            }
-        }
+      a {
+        background: #fff;
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
     }
+
+    .womenWear {
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      ::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      a {
+        background: white;
+        position: absolute;
+        z-index: 20;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+  }
 }
 
 .container {
-    max-width: 1440px !important;
+  max-width: 1440px !important;
 }
