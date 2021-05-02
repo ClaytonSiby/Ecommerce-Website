@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Directory from '../../components/Directory'
 
 const Homepage = () => {
     return (
         <div>
-            <h2>Homepage</h2>
+            <Directory />
         </div>
     )
 }
