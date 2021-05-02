@@ -12,10 +12,10 @@ const Directory = () => (
         sm={6}
         md={6}
         className="womenWear"
-        style={{ backgroundImage: `url(${ShopWomen})` }}
+        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .5 )), url(${ShopWomen})` }}
       >
-        <button type="button" className="btn btn-sm btn-info">
-          <a href="#example">Shop Women&apos;s</a>
+        <button type="button" className="btn btn-md btn-info">
+          <a href="#example" className="text-light">Shop Women&apos;s</a>
         </button>
       </Col>
       <Col
@@ -23,10 +23,10 @@ const Directory = () => (
         sm={6}
         md={6}
         className="menWear"
-        style={{ backgroundImage: `url(${ShopMen})` }}
+        style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .5 )), url(${ShopMen})` }}
       >
-        <button type="button" className="btn btn-sm btn-info">
-          <a href="#example">Shop Men&apos;s</a>
+        <button type="button" className="btn btn-md btn-info">
+          <a href="#example" className="text-light">Shop Men&apos;s</a>
         </button>
       </Col>
     </Row>
