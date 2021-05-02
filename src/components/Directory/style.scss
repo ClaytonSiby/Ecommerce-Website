@@ -1,44 +1,39 @@
 .directory {
-	height: 80vh;
+  height: 80vh;
+  max-width: 1440px !important;
 
-	.fashionContainer {
-		height: 100%;
-		background: green;
+  .fashionContainer {
+    height: 100%;
+    background: green;
 
-		.menWear {
-			height: 100%;
-			background-position: center center;
-			background-size: cover;
-			background-repeat: no-repeat;
+    .menWear {
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
 
-			button {
-				position: absolute;
-				z-index: 20;
-				transform: translate(-50%, -50%);
-				z-index: 20;
-				top: 50%;
-				left: 50%;
-			}
-		}
+      button {
+        position: absolute;
+        z-index: 20;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    }
 
-		.womenWear {
-			height: 100%;
-			background-position: center center;
-			background-size: cover;
-			background-repeat: no-repeat;
+    .womenWear {
+      height: 100%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
 
-			button {
-				position: absolute;
-				z-index: 20;
-				transform: translate(-50%, -50%);
-				z-index: 20;
-				top: 50%;
-				left: 50%;
-			}
-		}
-	}
-}
-
-.container {
-	max-width: 1440px !important;
+      button {
+        position: absolute;
+        z-index: 20;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    }
+  }
 }
