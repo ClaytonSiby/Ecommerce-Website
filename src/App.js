@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 
 // layouts
 import MainLayout from './Layouts/MainLayout';
-import HomepageLayout from './Layouts/HomepageLayout'
+import HomepageLayout from './Layouts/HomepageLayout';
 
 // pages
 import Homepage from './pages/Homepage';
