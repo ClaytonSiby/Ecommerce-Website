@@ -28,10 +28,10 @@ const Header = () => (
           </NavDropdown>
         </Nav>
         <Nav className="callToActions">
-          <Nav.Link href="#deets">More deets</Nav.Link>
           <Nav.Link href="/registration">
             REGISTER
           </Nav.Link>
+          <Nav.Link href="/login">LOGIN</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
