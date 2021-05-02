@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import Header from './components/Header';
+import MainLayout from './Layouts/MainLayout';
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
 import './default.scss';
@@ -9,13 +9,25 @@ import './default.scss';
 function App() {
   return (
     <Container className="App">
-      <Header />
-      <div className="main">
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/registration" component={Registration} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <MainLayout>
+              <Homepage />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/registration"
+          render={() => (
+            <MainLayout>
+              <Registration />
+            </MainLayout>
+          )}
+        />
+      </Switch>
     </Container>
   );
 }
