@@ -1,9 +1,18 @@
 import React from 'react';
+
+// components
 import { Route, Switch } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+
+// layouts
 import MainLayout from './Layouts/MainLayout';
+import HomepageLayout from './Layouts/HomepageLayout'
+
+// pages
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
+
+// styles
 import './default.scss';
 
 function App() {
@@ -14,9 +23,9 @@ function App() {
           exact
           path="/"
           render={() => (
-            <MainLayout>
+            <HomepageLayout>
               <Homepage />
-            </MainLayout>
+            </HomepageLayout>
           )}
         />
         <Route
