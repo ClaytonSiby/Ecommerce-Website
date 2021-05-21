@@ -37,7 +37,6 @@ function App () {
             </MainLayout>
           )}
         />
-
         <Route
           path='/login'
           render={() => (

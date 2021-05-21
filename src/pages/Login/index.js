@@ -1,12 +1,9 @@
 import React from 'react';
+import SignIn from '../../components/SignIn';
 import './style.scss';
 
 const Login = () => {
-    return (
-        <div>
-            <h1>Login Page</h1>
-        </div>
-    )
+    return <SignIn />
 }
 
 export default Login;
