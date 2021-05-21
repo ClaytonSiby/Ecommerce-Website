@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const MainLayout = ({ children }) => (
+const MainLayout = (props) => (
   <div>
-    <Header />
+    <Header { ...props } />
     <div className="main my-1">
-      { children }
+      { props.children }
     </div>
     <Footer />
   </div>

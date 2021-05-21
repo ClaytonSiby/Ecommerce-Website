@@ -47,6 +47,7 @@ class App extends Component {
   }
 
   render() {
+    const { currentUser } = this.state;
     return (
       <Container className='App'>
         <Switch>
@@ -54,7 +55,7 @@ class App extends Component {
             exact
             path='/'
             render={() => (
-              <HomepageLayout>
+              <HomepageLayout currentUser={currentUser}>
                 <Homepage />
               </HomepageLayout>
             )}
@@ -62,7 +63,7 @@ class App extends Component {
           <Route
             path='/registration'
             render={() => (
-              <MainLayout>
+              <MainLayout currentUser={currentUser}>
                 <Registration />
               </MainLayout>
             )}
@@ -70,7 +71,7 @@ class App extends Component {
           <Route
             path='/login'
             render={() => (
-              <MainLayout>
+              <MainLayout currentUser={currentUser}>
                 <Login />
               </MainLayout>
             )}

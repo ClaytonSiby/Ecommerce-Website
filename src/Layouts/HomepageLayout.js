@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const HomepageLayout = ({ children }) => (
   <div>
-    <Header />
+    <Header { ...props } />
     {children}
     <Footer />
   </div>
