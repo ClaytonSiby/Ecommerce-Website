@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // components
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { auth } from './Firebase/utils';
 
@@ -74,7 +74,7 @@ class App extends Component {
           />
           <Route
             path='/login'
-            render={() => (
+            render={() => currentUser ? <Redirect to="/" /> : (
               <MainLayout currentUser={currentUser}>
                 <Login />
               </MainLayout>

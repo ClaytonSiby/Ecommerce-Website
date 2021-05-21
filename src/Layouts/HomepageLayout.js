@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const HomepageLayout = ({ children }) => (
+const HomepageLayout = (props) => (
   <div>
     <Header { ...props } />
-    {children}
+    { props.children}
     <Footer />
   </div>
 );
