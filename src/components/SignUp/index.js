@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import FormInput from './../Forms/FormInput'
 import Button from './../Forms/Button'
+
+import { auth, handleUserProfile } from './../../Firebase/utils'
 import './styles.scss'
 
 const initialState = {
   displayName: '',
   email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  errors: []
 }
 
 class SignUp extends Component {
@@ -29,14 +32,57 @@ class SignUp extends Component {
     })
   }
 
+  handleFormSubmit = async event => {
+    event.preventDefault();
+
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if(password !== confirmPassword) {
+      const err = ['Passwords Don\'t match'];
+
+      this.setState({
+        errors: err
+      })
+      return;
+    }
+
+    try {
+      // create new user with their password and email address
+      const { user } = auth.createUserWithEmailAndPassword(email, password);
+
+      // pass additional attributes for the newly created user object ( displayName )
+      await handleUserProfile(user, { displayName })
+      this.setState({
+        ...initialState
+      })
+
+    } catch(error) {
+      // console.log(error);
+    }
+  }
+
   render () {
-    const { displayName, email, password, confirmPassword } = this.state
+    const { displayName, email, password, confirmPassword, errors } = this.state
     return (
       <div className='signup'>
         <div className='wrap'>
           <h2>SignUp</h2>
+
+          {
+            errors.length > 0 && (
+              <ul>
+                {
+                  errors.map((error, index) => {
+                    return (
+                      <li key={index}>{ error }</li>
+                    )
+                  })
+                }
+              </ul>
+            )
+          }
           <div className="formWrap">
-          <form>
+          <form onSubmit = { this.handleFormSubmit }>
             <FormInput
               type='text'
               name='displayName'
@@ -47,7 +93,7 @@ class SignUp extends Component {
 
             <FormInput
               type='email'
-              name='password'
+              name='email'
               value={email}
               onChange={this.handleChange}
               placeholder='Email Address'
@@ -63,7 +109,7 @@ class SignUp extends Component {
 
             <FormInput
               type='password'
-              name='password'
+              name='confirmPassword'
               value={confirmPassword}
               onChange={this.handleChange}
               placeholder='********'
