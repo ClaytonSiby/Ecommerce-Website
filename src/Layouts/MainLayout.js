@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const MainLayout = (props) => (
   <div>
-    <Header { ...props } />
+    <Header {...props} />
     <div className="main my-1">
       { props.children }
     </div>
