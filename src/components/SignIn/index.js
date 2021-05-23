@@ -50,9 +50,12 @@ class SignIn extends Component {
 
     render() {
       const { email, password } = this.state;
-      return (
-        <AuthWrapper>
+      const configAuthWrapper = {
+        headline: 'LogIn'
+      };
 
+      return (
+        <AuthWrapper {...configAuthWrapper}>
             <div className="formWrap">
               <form onSubmit={this.handleSubmit}>
                 <FormInput type="emial" value={email} name="email" onChange={this.handleChange} placeholder="email address" />
