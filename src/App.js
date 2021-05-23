@@ -12,6 +12,7 @@ import HomepageLayout from './Layouts/HomepageLayout';
 // pages
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
+import Recovery from './pages/Recovery';
 import Login from './pages/Login';
 
 // styles
@@ -86,6 +87,12 @@ class App extends Component {
               </MainLayout>
             ))}
           />
+
+          <Route path="/recovery" render={() => (
+            <MainLayout>
+              <Recovery />
+            </MainLayout>
+          )}/>
         </Switch>
       </Container>
     );
