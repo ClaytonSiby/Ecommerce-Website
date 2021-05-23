@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Forms/Button';
 import { signInWithGoogle, auth } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
+import AuthWrapper from './../AuthWrapper';
 import './style.scss';
 
 const initialState = {
@@ -50,9 +51,7 @@ class SignIn extends Component {
     render() {
       const { email, password } = this.state;
       return (
-        <div className="signIn">
-          <div className="wrap">
-            <h2>LogIn</h2>
+        <AuthWrapper>
 
             <div className="formWrap">
               <form onSubmit={this.handleSubmit}>
@@ -66,8 +65,7 @@ class SignIn extends Component {
                 </div>
               </form>
             </div>
-          </div>
-        </div>
+        </AuthWrapper>
       );
     }
 }
