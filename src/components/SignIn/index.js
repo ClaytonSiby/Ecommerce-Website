@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../Forms/Button';
+import { Link } from 'react-router-dom';
 import { signInWithGoogle, auth } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
@@ -62,9 +63,12 @@ class SignIn extends Component {
                 <FormInput type="password" value={password} name="password" onChange={this.handleChange} placeholder="password" />
                 <Button type="submit">Login</Button>
                 <div className="socialSignin">
-                  <div className="row my-2">
+                  <div className="">
                     <Button onClick={signInWithGoogle}>Sign in with Google</Button>
                   </div>
+                </div>
+                <div className="links">
+                  <Link to="/recovery">Reset Password</Link>
                 </div>
               </form>
             </div>
