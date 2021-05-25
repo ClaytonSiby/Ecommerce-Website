@@ -14,7 +14,7 @@ GoogleProvider.setCustomParameters({ prompts: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
 async function handleUserProfile(userAuth, additionalData) {
-  if (!userAuth) return;
+  if (!userAuth) return null;
   const { uid } = userAuth;
 
   // return a reference document for a user from the database (get/set data) if user exists
