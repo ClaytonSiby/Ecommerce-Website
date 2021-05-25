@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Button from '../Forms/Button';
 import { Link } from 'react-router-dom';
+import Button from '../Forms/Button';
 import { signInWithGoogle, auth } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
-import AuthWrapper from './../AuthWrapper';
+import AuthWrapper from '../AuthWrapper';
 import './style.scss';
 
 const initialState = {
@@ -52,26 +52,26 @@ class SignIn extends Component {
     render() {
       const { email, password } = this.state;
       const configAuthWrapper = {
-        headline: 'LogIn'
+        headline: 'LogIn',
       };
 
       return (
         <AuthWrapper {...configAuthWrapper}>
-            <div className="formWrap">
-              <form onSubmit={this.handleSubmit}>
-                <FormInput type="emial" value={email} name="email" onChange={this.handleChange} placeholder="email address" />
-                <FormInput type="password" value={password} name="password" onChange={this.handleChange} placeholder="password" />
-                <Button type="submit">Login</Button>
-                <div className="socialSignin">
-                  <div className="">
-                    <Button onClick={signInWithGoogle}>Sign in with Google</Button>
-                  </div>
+          <div className="formWrap">
+            <form onSubmit={this.handleSubmit}>
+              <FormInput type="emial" value={email} name="email" onChange={this.handleChange} placeholder="email address" />
+              <FormInput type="password" value={password} name="password" onChange={this.handleChange} placeholder="password" />
+              <Button type="submit">Login</Button>
+              <div className="socialSignin">
+                <div className="">
+                  <Button onClick={signInWithGoogle}>Sign in with Google</Button>
                 </div>
-                <div className="links">
-                  <Link to="/recovery">Reset Password</Link>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div className="links">
+                <Link to="/recovery">Reset Password</Link>
+              </div>
+            </form>
+          </div>
         </AuthWrapper>
       );
     }

@@ -88,11 +88,14 @@ class App extends Component {
             ))}
           />
 
-          <Route path="/recovery" render={() => (
-            <MainLayout>
-              <Recovery />
-            </MainLayout>
-          )}/>
+          <Route
+            path="/recovery"
+            render={() => (
+              <MainLayout>
+                <Recovery />
+              </MainLayout>
+            )}
+          />
         </Switch>
       </Container>
     );

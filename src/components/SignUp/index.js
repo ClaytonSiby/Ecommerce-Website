@@ -1,76 +1,80 @@
-import React, { Component } from 'react'
-import FormInput from '../Forms/FormInput'
-import Button from '../Forms/Button'
-import AuthWrapper from './../AuthWrapper'
+import React, { Component } from 'react';
+import FormInput from '../Forms/FormInput';
+import Button from '../Forms/Button';
+import AuthWrapper from '../AuthWrapper';
 
-import { auth, handleUserProfile } from '../../Firebase/utils'
-import './styles.scss'
+import { auth, handleUserProfile } from '../../Firebase/utils';
+import './styles.scss';
 
 const initialState = {
   displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
-  errors: []
-}
+  errors: [],
+};
 
 class SignUp extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      ...initialState
-    }
+      ...initialState,
+    };
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange (e) {
-    const { name, value } = e.target
+  handleChange(e) {
+    const { name, value } = e.target;
 
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+    });
   }
 
-  handleFormSubmit = async event => {
-    event.preventDefault()
+  handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-    const { displayName, email, password, confirmPassword } = this.state
+    const {
+      displayName, email, password, confirmPassword,
+    } = this.state;
 
     if (password !== confirmPassword) {
-      const err = ["Passwords Don't match"]
+      const err = ["Passwords Don't match"];
 
       this.setState({
-        errors: err
-      })
-      return
+        errors: err,
+      });
+      return;
     }
 
     try {
       // create new user with their password and email address
-      const { user } = auth.createUserWithEmailAndPassword(email, password)
+      const { user } = auth.createUserWithEmailAndPassword(email, password);
 
       // pass additional attributes for the newly created user object ( displayName )
-      await handleUserProfile(user, { displayName })
+      await handleUserProfile(user, { displayName });
       this.setState({
-        ...initialState
-      })
+        ...initialState,
+      });
     } catch (error) {
       // console.log(error);
     }
   }
 
-  render () {
-    const { displayName, email, password, confirmPassword, errors } = this.state
+  render() {
+    const {
+      displayName, email, password, confirmPassword, errors,
+    } = this.state;
 
     const configAuthWrapper = {
-      headline: 'SignUp'
-    }
+      headline: 'SignUp',
+    };
 
     return (
       <AuthWrapper {...configAuthWrapper}>
-        <div className='formWrap'>
+        <div className="formWrap">
           {errors.length > 0 && (
             <ul>
               {errors.map((error, index) => (
@@ -80,43 +84,43 @@ class SignUp extends Component {
           )}
           <form onSubmit={this.handleFormSubmit}>
             <FormInput
-              type='text'
-              name='displayName'
+              type="text"
+              name="displayName"
               value={displayName}
               onChange={this.handleChange}
-              placeholder='Full Name'
+              placeholder="Full Name"
             />
 
             <FormInput
-              type='email'
-              name='email'
+              type="email"
+              name="email"
               value={email}
               onChange={this.handleChange}
-              placeholder='Email Address'
+              placeholder="Email Address"
             />
 
             <FormInput
-              type='password'
-              name='password'
+              type="password"
+              name="password"
               value={password}
               onChange={this.handleChange}
-              placeholder='********'
+              placeholder="********"
             />
 
             <FormInput
-              type='password'
-              name='confirmPassword'
+              type="password"
+              name="confirmPassword"
               value={confirmPassword}
               onChange={this.handleChange}
-              placeholder='********'
+              placeholder="********"
             />
 
-            <Button type='submit'>Register</Button>
+            <Button type="submit">Register</Button>
           </form>
         </div>
       </AuthWrapper>
-    )
+    );
   }
 }
 
-export default SignUp
+export default SignUp;
