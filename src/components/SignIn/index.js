@@ -40,14 +40,14 @@ const SignIn = () => {
 						type="emial"
 						value={email}
 						name="email"
-						onChange={e => setEmail(e.target.value)}
+						handleChange={e => setEmail(e.target.value)}
 						placeholder="email address"
 					/>
 					<FormInput
 						type="password"
 						value={password}
 						name="password"
-						onChange={e => setPassword(e.target.value)}
+						handleChange={e => setPassword(e.target.value)}
 						placeholder="password"
 					/>
 					<Button type="submit">Login</Button>
