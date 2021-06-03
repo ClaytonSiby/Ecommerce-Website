@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   Navbar, Nav, NavDropdown, Container,
 } from 'react-bootstrap';
@@ -7,6 +8,7 @@ import './styles.scss';
 
 const Header = (props) => {
   const { currentUser } = props;
+  // console.log(auth.signInWithPopup)
   return (
     <Container className="p-0">
       <Navbar
@@ -55,4 +57,8 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-export default Header;
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+
+export default connect(mapStateToProps, null)(Header);
