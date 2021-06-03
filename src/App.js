@@ -11,6 +11,7 @@ import HomepageLayout from './Layouts/HomepageLayout';
 
 // pages
 import Homepage from './pages/Homepage';
+
 import Registration from './pages/Registration';
 import Recovery from './pages/Recovery';
 import Login from './pages/Login';
@@ -83,7 +84,7 @@ class App extends Component {
             path="/login"
             render={() => (currentUser ? <Redirect to="/" /> : (
               <MainLayout currentUser={currentUser}>
-                <Login /> 
+                <Login />
               </MainLayout>
             ))}
           />
