@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Button from '../Forms/Button';
 import { signInWithGoogle, auth } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
 import AuthWrapper from '../AuthWrapper';
 import './style.scss';
 
-const SignIn = () => {
+const SignIn = (props) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -22,7 +22,8 @@ const SignIn = () => {
 			// try to signin with provided email and password
 			await auth.signInWithEmailAndPassword(email, password);
 			// reset the form
-      resetForm();
+           resetForm();
+	       props.history.push('/')
 		} catch (error) {
 			// console.log(error);
 		}
@@ -65,4 +66,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default withRouter(SignIn);

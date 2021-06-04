@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import AuthWrapper from '../AuthWrapper';
@@ -6,7 +7,7 @@ import AuthWrapper from '../AuthWrapper';
 import { auth, handleUserProfile } from '../../Firebase/utils';
 import './styles.scss';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,6 +39,7 @@ const SignUp = () => {
 			// pass additional attributes for the newly created user object ( displayName )
 			await handleUserProfile(user, { displayName });
 			resetForm();
+			props.history.push('/')
 		} catch (error) {
 			// console.log(error);
 		}
@@ -97,4 +99,4 @@ const SignUp = () => {
 	);
 };
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -60,10 +60,7 @@ const App = (props) => {
 				/>
 				<Route
 					path="/registration"
-					render={() =>
-						currentUser ? (
-							<Redirect to="/" />
-						) : (
+					render={() => (
 							<MainLayout>
 								<Registration />
 							</MainLayout>
@@ -72,10 +69,7 @@ const App = (props) => {
 				/>
 				<Route
 					path="/login"
-					render={() =>
-						currentUser ? (
-							<Redirect to="/" />
-						) : (
+					render={() => (
 							<MainLayout>
 								<Login />
 							</MainLayout>
