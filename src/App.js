@@ -7,7 +7,7 @@ import { setCurrentUser } from './redux/Users/user.actions';
 import { auth, handleUserProfile } from './Firebase/utils';
 
 // Higher Order components
-import WithAuth from './higherOrderComponent/WithAuth';
+import WithAuth from './hoc/withAuth';
 
 // layouts
 import MainLayout from './Layouts/MainLayout';
@@ -38,7 +38,6 @@ const App = (props) => {
 					});
 				});
 			}
-
 			setCurrentUser(userAuth);
 		});
 
