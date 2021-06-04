@@ -1,12 +1,14 @@
 import userTypes from './user.types';
-import { auth } from '../../Firebase/utils';
+import { auth, handleUserProfile } from '../../Firebase/utils';
 
 const setCurrentUser = (user) => ({
 	type: userTypes.SET_CURRENT_USER,
 	payload: user,
 });
 
-const signInUser = ({ email, password }) => async (dispatch) => {
+const signInUser =
+	({ email, password }) =>
+	async (dispatch) => {
 		try {
 			// try to signin with provided email and password
 			await auth.signInWithEmailAndPassword(email, password);
@@ -18,6 +20,33 @@ const signInUser = ({ email, password }) => async (dispatch) => {
 		} catch (error) {
 			console.log(error);
 		}
-};
+	};
 
-export { setCurrentUser, signInUser }
+const signUpUser =
+	({ displayName, email, password, confirmPassword }) =>
+	async (dispatch) => {
+		if (password !== confirmPassword) {
+			const err = ["Passwords Don't match"];
+		    dispatch({
+				type: userTypes.SIGN_UP_ERROR,
+				payload: err
+			})
+			return;
+		}
+
+		try {
+			// create new user with their password and email address
+			const { user } = auth.createUserWithEmailAndPassword(email, password);
+
+			// pass additional attributes for the newly created user object ( displayName )
+			await handleUserProfile(user, { displayName });
+			dispatch({
+				type: userTypes.SIGN_UP_SUCCESS,
+				payload: true
+			})
+		} catch (error) {
+			// console.log(error);
+		}
+	};
+
+export { setCurrentUser, signInUser, signUpUser };
