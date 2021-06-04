@@ -38,11 +38,13 @@ const Header = (props) => {
           </Nav>
           {currentUser && (
             <Nav className="callToActions">
+              <Nav.Link href="/dashboard">DASHBOARD</Nav.Link>
               <Nav.Link onClick={() => auth.signOut()}>LOGOUT</Nav.Link>
             </Nav>
           )}
           {!currentUser && (
             <Nav className="callToActions">
+              <Nav.Link href="/dashboard">DASHBOARD</Nav.Link>
               <Nav.Link href="/registration">REGISTER</Nav.Link>
               <Nav.Link href="/login">LOGIN</Nav.Link>
             </Nav>

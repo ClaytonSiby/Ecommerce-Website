@@ -6,12 +6,16 @@ import { Container } from 'react-bootstrap';
 import { setCurrentUser } from './redux/Users/user.actions';
 import { auth, handleUserProfile } from './Firebase/utils';
 
+// Higher Order components
+import WithAuth from './higherOrderComponent/WithAuth';
+
 // layouts
 import MainLayout from './Layouts/MainLayout';
 import HomepageLayout from './Layouts/HomepageLayout';
 
 // pages
 import Homepage from './pages/Homepage';
+import Dashboard from './pages/DashBoard';
 
 import Registration from './pages/Registration';
 import Recovery from './pages/Recovery';
@@ -86,6 +90,16 @@ const App = (props) => {
 						<MainLayout>
 							<Recovery />
 						</MainLayout>
+					)}
+				/>
+				<Route
+					path="/dashboard"
+					render={() => (
+						<WithAuth>
+							<MainLayout>
+								<Dashboard />
+							</MainLayout>
+						</WithAuth>
 					)}
 				/>
 			</Switch>
