@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   Navbar, Nav, NavDropdown, Container,
 } from 'react-bootstrap';
@@ -7,9 +7,13 @@ import {Link} from 'react-router-dom';
 import { auth } from '../../Firebase/utils';
 import './styles.scss';
 
-const Header = (props) => {
-  const { currentUser } = props;
-  // console.log(auth.signInWithPopup)
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser
+})
+
+const Header = () => {
+  const { currentUser } = useSelector(mapState);
+
   return (
     <Container className="p-0">
       <Navbar
@@ -59,8 +63,4 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
-});
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
