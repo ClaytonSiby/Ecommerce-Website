@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import Button from '../Forms/Button';
-import { signInWithGoogle, auth } from '../../Firebase/utils';
+import { signInWithGoogle } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
 import AuthWrapper from '../AuthWrapper';
+import { signInUser } from './../../redux/Users/user.actions';
 import './style.scss';
 
+const mapState = ({ user }) => ({
+	signInSuccess: user.signInSuccess,
+});
+
 const SignIn = (props) => {
+	const dispatch = useDispatch();
+	const { signInSuccess } = useSelector(mapState);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-  const resetForm = () => {
-    setEmail('');
-    setPassword('');
-  }
+	const resetForm = () => {
+		setEmail('');
+		setPassword('');
+	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-
-		try {
-			// try to signin with provided email and password
-			await auth.signInWithEmailAndPassword(email, password);
-			// reset the form
-           resetForm();
-	       props.history.push('/')
-		} catch (error) {
-			// console.log(error);
+	useEffect(() => {
+		if(signInSuccess) {
+			resetForm();
+			props.history.push('/');
 		}
+	}, [signInSuccess]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(signInUser({email, password}));
 	};
 
 	const configAuthWrapper = {
@@ -41,14 +47,14 @@ const SignIn = (props) => {
 						type="emial"
 						value={email}
 						name="email"
-						handleChange={e => setEmail(e.target.value)}
+						handleChange={(e) => setEmail(e.target.value)}
 						placeholder="email address"
 					/>
 					<FormInput
 						type="password"
 						value={password}
 						name="password"
-						handleChange={e => setPassword(e.target.value)}
+						handleChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
 					/>
 					<Button type="submit">Login</Button>
