@@ -27,10 +27,10 @@ const signUpUser =
 	async (dispatch) => {
 		if (password !== confirmPassword) {
 			const err = ["Passwords Don't match"];
-		    dispatch({
+			dispatch({
 				type: userTypes.SIGN_UP_ERROR,
-				payload: err
-			})
+				payload: err,
+			});
 			return;
 		}
 
@@ -42,11 +42,38 @@ const signUpUser =
 			await handleUserProfile(user, { displayName });
 			dispatch({
 				type: userTypes.SIGN_UP_SUCCESS,
-				payload: true
-			})
+				payload: true,
+			});
 		} catch (error) {
 			// console.log(error);
 		}
 	};
 
-export { setCurrentUser, signInUser, signUpUser };
+const resetPassword = ({ email }) => async (dispatch) => {
+		const config = {
+			url: 'http://localhost:3000/login',
+		};
+		try {
+			// redirect to this url once done reseting password
+
+			await auth
+				.sendPasswordResetEmail(email, config)
+				.then(() => {
+					dispatch({
+						type: userTypes.RESET_PASSWORD_SUCCESS,
+						payload: true
+					})
+				})
+				.catch(() => {
+					const err = ['Email not found. Please try again'];
+					dispatch({
+						type: userTypes.RESET_PASSWORD_ERROR,
+						payload: err
+					})
+				});
+		} catch (error) {
+			// console.log(error);
+		}
+	};
+
+export { setCurrentUser, signInUser, signUpUser, resetPassword };

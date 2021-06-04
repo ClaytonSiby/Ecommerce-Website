@@ -4,7 +4,9 @@ const INITIAL_STATE = {
   currentUser: null,
   signInSuccess: false,
   signUpSuccess: false,
-  signUpErrors: []
+  signUpErrors: [],
+  resetPasswordSuccess: false,
+  resetPasswordError: []
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -31,6 +33,18 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         signUpErrors: action.payload
+      }
+
+    case userTypes.RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        resetPasswordSuccess: action.payload
+      }
+
+    case userTypes.RESET_PASSWORD_ERROR:
+      return {
+        ...state,
+        resetPasswordError: action.payload
       }
     default:
       return state;
