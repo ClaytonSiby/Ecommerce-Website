@@ -1,5 +1,5 @@
 import userTypes from './user.types';
-import { auth, handleUserProfile } from '../../Firebase/utils';
+import { auth, handleUserProfile, GoogleProvider } from '../../Firebase/utils';
 
 const setCurrentUser = (user) => ({
 	type: userTypes.SET_CURRENT_USER,
@@ -76,4 +76,22 @@ const resetPassword = ({ email }) => async (dispatch) => {
 		}
 	};
 
-export { setCurrentUser, signInUser, signUpUser, resetPassword };
+
+const signInWithGoogle = () => async dispatch => {
+	try{
+		await	auth.signInWithPopup(GoogleProvider)
+		.then(() => {
+			dispatch({
+				type: userTypes.SIGN_IN_SUCCESS,
+				payload: true,
+			});
+		})
+	}
+	catch(error) {
+		// console.log(error)
+	}
+
+};
+
+export { setCurrentUser, signInUser, signUpUser, resetPassword, signInWithGoogle };
+

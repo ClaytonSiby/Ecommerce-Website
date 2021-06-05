@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import Button from '../Forms/Button';
-import { signInWithGoogle } from '../../Firebase/utils';
 import FormInput from '../Forms/FormInput';
 import AuthWrapper from '../AuthWrapper';
-import { signInUser } from './../../redux/Users/user.actions';
+import { signInUser, signInWithGoogle } from './../../redux/Users/user.actions';
 import './style.scss';
 
 const mapState = ({ user }) => ({
@@ -35,6 +34,10 @@ const SignIn = (props) => {
 		dispatch(signInUser({email, password}));
 	};
 
+	const handleGoogleSignIn =() => {
+		dispatch(signInWithGoogle());
+	}
+
 	const configAuthWrapper = {
 		headline: 'LogIn',
 	};
@@ -60,7 +63,7 @@ const SignIn = (props) => {
 					<Button type="submit">Login</Button>
 					<div className="socialSignin">
 						<div className="">
-							<Button onClick={signInWithGoogle}>Sign in with Google</Button>
+							<Button onClick={handleGoogleSignIn}>Sign in with Google</Button>
 						</div>
 					</div>
 					<div className="links">
