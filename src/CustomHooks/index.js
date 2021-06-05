@@ -1,4 +1,4 @@
-import useAuth from './useAuth';
+import useAuth from './UseAuth';
 
 export {
     useAuth
