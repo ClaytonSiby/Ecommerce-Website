@@ -1,7 +1,7 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
 import { auth, handleUserProfile, getCurrentUser, GoogleProvider } from '../../Firebase/utils';
 import userTypes from './user.types';
-import { signInSuccess } from './user.actions';
+import { signInSuccess, signOutUserSuccess } from './user.actions';
 
 export function* getSnapShotFromUserAuth(user) {
 	try {
@@ -52,7 +52,22 @@ export function* onCheckUserSession() {
     yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
+export function* signOutUser() {
+	try{
+	  yield auth.signOut();
+	  // subscribe to the store.
+
+	  yield put(signOutUserSuccess())
+	} catch(error) {
+		// console.log(error);
+	}
+}
+
+export function* onSignOutUserStart() {
+	yield takeLatest(userTypes.SIGN_OUT_USER_START, signOutUser)
+}
+
 export default function* userSagas() {
 	// call the email start function
-	yield all([call(onEmailSignInStart), call(onCheckUserSession)]);
+	yield all([call(onEmailSignInStart), call(onCheckUserSession), call(onSignOutUserStart)]);
 }

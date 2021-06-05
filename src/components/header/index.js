@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOutUserStart } from './../../redux/Users/user.actions'
 import {
   Navbar, Nav, NavDropdown, Container,
 } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import { auth } from '../../Firebase/utils';
 import './styles.scss';
 
 const mapState = ({ user }) => ({
@@ -13,6 +13,9 @@ const mapState = ({ user }) => ({
 
 const Header = () => {
   const { currentUser } = useSelector(mapState);
+  const dispatch = useDispatch();
+
+  const signOut = () => dispatch(signOutUserStart());
 
   return (
     <Container className="p-0">
@@ -44,7 +47,7 @@ const Header = () => {
           {currentUser && (
             <Nav className="callToActions">
               <Link to="/dashboard" className="nav-link">My Account</Link>
-              <Nav.Link onClick={() => auth.signOut()}>LOGOUT</Nav.Link>
+              <Nav.Link onClick={() => signOut()}>LOGOUT</Nav.Link>
             </Nav>
           )}
           {!currentUser && (
