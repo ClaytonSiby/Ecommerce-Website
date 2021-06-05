@@ -93,5 +93,9 @@ const signInWithGoogle = () => async dispatch => {
 
 };
 
-export { setCurrentUser, signInUser, signUpUser, resetPassword, signInWithGoogle };
+const resetAllAuthForms = () => ({
+	type: userTypes.RESET_AUTH_FORMS
+})
+
+export { setCurrentUser, signInUser, signUpUser, resetPassword, signInWithGoogle, resetAllAuthForms };
 

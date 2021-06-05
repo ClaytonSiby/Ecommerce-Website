@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import AuthWrapper from '../AuthWrapper';
-import { signInUser, signInWithGoogle } from './../../redux/Users/user.actions';
+import { signInUser, signInWithGoogle, resetAllAuthForms } from './../../redux/Users/user.actions';
 import './style.scss';
 
 const mapState = ({ user }) => ({
@@ -25,6 +25,7 @@ const SignIn = (props) => {
 	useEffect(() => {
 		if(signInSuccess) {
 			resetForm();
+			dispatch(resetAllAuthForms())
 			props.history.push('/');
 		}
 	}, [signInSuccess]);
