@@ -1,26 +1,47 @@
 import userTypes from './user.types';
 import { auth, handleUserProfile, GoogleProvider } from '../../Firebase/utils';
 
+
+export const emailSignInStart = userCredentials => ({
+	type: userTypes.EMAIL_SIGN_IN_START,
+	payload: userCredentials
+})
+
+export const signInSuccess = user => ({
+	type: userTypes.SIGN_IN_SUCCESS,
+	payload: user
+})
+
+export const checkUserSession = () => ({
+	type: userTypes.CHECK_USER_SESSION,
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const setCurrentUser = (user) => ({
 	type: userTypes.SET_CURRENT_USER,
 	payload: user,
 });
 
-const signInUser =
-	({ email, password }) =>
-	async (dispatch) => {
-		try {
-			// try to signin with provided email and password
-			await auth.signInWithEmailAndPassword(email, password);
-			dispatch({
-				type: userTypes.SIGN_IN_SUCCESS,
-				payload: true,
-			});
-			// reset the form
-		} catch (error) {
-			console.log(error);
-		}
-	};
+// const signInUser =
+// 	({ email, password }) =>
+// 	async (dispatch) => {
+		
+// 	};
 
 const signUpUser =
 	({ displayName, email, password, confirmPassword }) =>
@@ -97,5 +118,5 @@ const resetAllAuthForms = () => ({
 	type: userTypes.RESET_AUTH_FORMS
 })
 
-export { setCurrentUser, signInUser, signUpUser, resetPassword, signInWithGoogle, resetAllAuthForms };
+export { setCurrentUser, signUpUser, resetPassword, signInWithGoogle, resetAllAuthForms };
 

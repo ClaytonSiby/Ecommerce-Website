@@ -12,7 +12,8 @@ export const firestore = firebase.firestore();
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompts: 'select_account' });
 
-async function handleUserProfile(userAuth, additionalData) {
+// function that checks if the user is registered in our database or not.
+async function handleUserProfile({userAuth, additionalData}) {
   if (!userAuth) return null;
   const { uid } = userAuth;
 
@@ -38,8 +39,17 @@ async function handleUserProfile(userAuth, additionalData) {
     }
   }
 
-  // return userRef to set the localState of the application.
+  // return userRef to set the redux store.
   return userRef;
 }
 
-export { handleUserProfile };
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  })
+}
+
+export { handleUserProfile, getCurrentUser };
