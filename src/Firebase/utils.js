@@ -13,7 +13,7 @@ export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompts: 'select_account' });
 
 // function that checks if the user is registered in our database or not.
-async function handleUserProfile({userAuth, additionalData}) {
+async function handleUserProfile({ userAuth, additionalData }) {
   if (!userAuth) return null;
   const { uid } = userAuth;
 
@@ -43,13 +43,11 @@ async function handleUserProfile({userAuth, additionalData}) {
   return userRef;
 }
 
-const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
-      unsubscribe();
-      resolve(userAuth);
-    }, reject);
-  })
-}
+const getCurrentUser = () => new Promise((resolve, reject) => {
+  const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+    unsubscribe();
+    resolve(userAuth);
+  }, reject);
+});
 
 export { handleUserProfile, getCurrentUser };

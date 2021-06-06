@@ -24,63 +24,61 @@ import Login from './pages/Login';
 import './default.scss';
 
 const App = (props) => {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(checkUserSession())
-	}, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
 
-	return (
-		<Container className="App">
-			<Switch>
-				<Route
-					exact
-					path="/"
-					render={() => (
-						<HomepageLayout>
-							<Homepage />
-						</HomepageLayout>
-					)}
-				/>
-				<Route
-					path="/registration"
-					render={() => (
-							<MainLayout>
-								<Registration />
-							</MainLayout>
-						)
-					}
-				/>
-				<Route
-					path="/login"
-					render={() => (
-							<MainLayout>
-								<Login />
-							</MainLayout>
-						)
-					}
-				/>
+  return (
+    <Container className="App">
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <HomepageLayout>
+              <Homepage />
+            </HomepageLayout>
+          )}
+        />
+        <Route
+          path="/registration"
+          render={() => (
+            <MainLayout>
+              <Registration />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/login"
+          render={() => (
+            <MainLayout>
+              <Login />
+            </MainLayout>
+          )}
+        />
 
-				<Route
-					path="/recovery"
-					render={() => (
-						<MainLayout>
-							<Recovery />
-						</MainLayout>
-					)}
-				/>
-				<Route
-					path="/dashboard"
-					render={() => (
-						<WithAuth>
-							<MainLayout>
-								<Dashboard />
-							</MainLayout>
-						</WithAuth>
-					)}
-				/>
-			</Switch>
-		</Container>
-	);
+        <Route
+          path="/recovery"
+          render={() => (
+            <MainLayout>
+              <Recovery />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/dashboard"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+      </Switch>
+    </Container>
+  );
 };
 
 export default App;

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signOutUserStart } from './../../redux/Users/user.actions'
 import {
   Navbar, Nav, NavDropdown, Container,
 } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signOutUserStart } from '../../redux/Users/user.actions';
 import './styles.scss';
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser
-})
+  currentUser: user.currentUser,
+});
 
 const Header = () => {
   const { currentUser } = useSelector(mapState);

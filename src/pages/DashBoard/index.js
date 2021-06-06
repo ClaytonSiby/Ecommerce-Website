@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.scss';
 
-const Dashboard = props => (<h1>Your logged in!</h1>);
+const Dashboard = (props) => (<h1>Your logged in!</h1>);
 
 export default Dashboard;
