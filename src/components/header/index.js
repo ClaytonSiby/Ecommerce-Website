@@ -46,6 +46,7 @@ const Header = () => {
           </Nav>
           {currentUser && (
             <Nav className="callToActions">
+              <Nav.Link>{ currentUser.displayName }</Nav.Link>
               <Link to="/dashboard" className="nav-link">My Account</Link>
               <Nav.Link onClick={() => signOut()}>LOGOUT</Nav.Link>
             </Nav>

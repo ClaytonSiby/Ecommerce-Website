@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import AuthWrapper from '../AuthWrapper';
-import { signUpUserStart } from '../../redux/Users/user.actions';
+import { signUpUserStart } from './../../redux/Users/user.actions';
 import './styles.scss';
 
 const mapState = ({ user }) => ({
@@ -39,21 +39,21 @@ const SignUp = (props) => {
   }, [currentUser]);
 
   // check if signing up returns an error.
-  console.log(userError)
   useEffect(() => {
     if (Array.isArray(userError) && userError.length > 0) {
       setErrors(userError);
     }
-  }, []);
+  }, [userError]);
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = event => {
     event.preventDefault();
-    dispatch(signUpUserStart(
-      {
-        displayName, email, password, confirmPassword,
-      },
-    ));
-  };
+    dispatch(signUpUserStart({
+      displayName,
+      email,
+      password,
+      confirmPassword
+    }));
+  }
 
   const configAuthWrapper = {
     headline: 'SignUp',
