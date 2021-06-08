@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import AuthWrapper from '../AuthWrapper';
-import { signUpUserStart } from './../../redux/Users/user.actions';
+import { signUpUserStart } from '../../redux/Users/user.actions';
 import './styles.scss';
 
 const mapState = ({ user }) => ({
@@ -45,15 +45,15 @@ const SignUp = (props) => {
     }
   }, [userError]);
 
-  const handleFormSubmit = event => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(signUpUserStart({
       displayName,
       email,
       password,
-      confirmPassword
+      confirmPassword,
     }));
-  }
+  };
 
   const configAuthWrapper = {
     headline: 'SignUp',
